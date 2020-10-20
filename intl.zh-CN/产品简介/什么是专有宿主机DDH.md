@@ -1,37 +1,47 @@
-# 什么是专有宿主机DDH {#concept_yqx_czm_tdb .concept}
+# 什么是专有宿主机DDH
 
-通过本文档，您可以了解专有宿主机的基本概念，以及专有宿主机与共享宿主机的区别。
+专有宿主机DDH（Dedicated Host）是阿里云专为企业客户定制优化的云端解决方案，具有物理资源独享、部署更灵活、配置更丰富、性价比更高等特点，可以有效地降低企业上云的TCO（Total Cost of Ownership）。
 
-阿里云专有宿主机（Dedicated Host，简称DDH）是指由一个租户独享物理资源的云主机。作为该云主机的唯一租户，您不需要与其他租户共享云主机所有物理资源。您还可以获得这台物理服务器的物理属性信息，包括CPU数量（Socket数）、物理CPU核数、内存大小，并根据 [宿主机规格](intl.zh-CN/产品简介/宿主机规格.md#) 创建指定规格族的ECS实例。
+DDH是指由一个租户独享物理资源的云主机。作为该云主机的唯一租户，您不需要与其他租户共享云主机所有物理资源。您还可以获得这台物理服务器的物理属性信息，包括CPU数量（Socket数）、物理CPU核数、内存大小，并根据宿主机规格创建指定规格族的ECS实例。宿主机规格详情，请参见[宿主机规格](/intl.zh-CN/产品简介/宿主机规格.md)。
 
-DDH与共享宿主机的区别如下图所示。
+## 功能特性
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/6617/1543981833894_zh-CN.png)
+DDH提供自动部署、关联宿主机等功能，让您灵活部署业务。更多详情，请参见[功能特性](/intl.zh-CN/产品简介/功能特性.md)。
 
-## 基本概念 {#section_qrr_mzm_tdb .section}
+## 应用场景
 
-与DDH相关的基本概念，请参见 [名词解释](intl.zh-CN/产品简介/名词解释.md#)。
+DDH满足严格的安全合规要求，允许您自带许可证（BYOL）上云，有效地降低业务迁移上云的成本。更多详情，请参见[应用场景](/intl.zh-CN/产品简介/应用场景.md)。
 
-## DDH定价 {#section_rrr_mzm_tdb .section}
+## 产品优势
 
-DDH支持预付费，更多计费信息，请参见 [计费概述](../../../../intl.zh-CN/产品定价/计费概述.md#)。
+与共享宿主机（多租户环境）相比，DDH为您提供一种依托于阿里云虚拟化服务的单租户运行环境，能让您独享一台云主机的所有物理资源，同时还兼具灵活性和弹性。DDH与共享宿主机的区别如下图所示。
 
-## 相关服务 {#section_srr_mzm_tdb .section}
+![区别](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1861659951/p894.png)
 
-在DDH上创建的ECS实例支持的阿里云服务，请参见 云服务器ECS 的 [什么是云服务器ECS](../../../../intl.zh-CN/产品简介/什么是云服务器ECS.md#)。
+在DDH上创建的ECS实例继承了基于共享宿主机云服务器ECS的所有功能和性能指标，方便您部署和使用。更多详情，请参见[产品优势](/intl.zh-CN/产品简介/产品优势.md)。
 
-DDH上的ECS实例与共享宿主机上ECS实例的功能差异，请参见 [ECS实例功能对比](intl.zh-CN/产品简介/ECS实例功能对比.md#)。
+## 相关服务
 
-## 使用DDH {#section_trr_mzm_tdb .section}
+在DDH上创建的ECS实例支持的阿里云服务，请参见[什么是云服务器ECS](/intl.zh-CN/产品简介/什么是云服务器ECS.md)。
 
-使用DDH资源的相关限制，请参见 [使用限制](intl.zh-CN/产品简介/使用限制.md#)。
+DDH上的ECS实例与共享宿主机上ECS实例的功能差异，请参见[ECS实例功能对比](/intl.zh-CN/产品简介/ECS实例功能对比.md)。
 
-您可以使用 [ECS管理控制台](https://ecs.console.aliyun.com/#/home) 管理DDH，执行以下操作：
+## 使用DDH
 
--   [创建DDH](../../../../intl.zh-CN/快速入门/创建DDH.md#)
--   [在DDH上创建ECS实例](../../../../intl.zh-CN/快速入门/在DDH上创建ECS实例.md#)
--   [在不同DDH之间迁移ECS实例](../../../../intl.zh-CN/用户指南/在不同DDH之间迁移ECS实例.md#)
--   [将ECS实例从共享宿主机迁移到DDH](../../../../intl.zh-CN/用户指南/将ECS实例从共享宿主机迁移到DDH.md#)
--   在预付费DDH上，您可以将ECS实例的计费方式从按量付费转为预付费。详细信息，请参见 [按量付费转预付费](../../../../intl.zh-CN/产品定价/按量付费转预付费.md#)
--   对于预付费DDH，您可以 [自动续费](../../../../intl.zh-CN/用户指南/自动续费.md#) 或 [手动续费](../../../../intl.zh-CN/用户指南/手动续费.md#)
+使用DDH资源的相关限制，请参见[使用限制](/intl.zh-CN/产品简介/使用限制.md)。
+
+通过ECS管理控制台创建DDH。具体操作请参见[创建DDH](/intl.zh-CN/快速入门/创建DDH.md)。
+
+DDH创建后，您可以在DDH上进行下列操作：
+
+-   [在DDH上创建ECS实例](/intl.zh-CN/快速入门/在DDH上创建ECS实例.md)
+-   [在不同DDH之间迁移ECS实例](/intl.zh-CN/用户指南/在不同DDH之间迁移ECS实例.md)
+-   [将ECS实例从共享宿主机迁移到DDH](/intl.zh-CN/用户指南/将ECS实例从共享宿主机迁移到DDH.md)
+-   [升降配包年包月ECS实例](/intl.zh-CN/用户指南/升降配包年包月ECS实例.md)
+-   [ECS实例计费方式由按量付费转为包年包月](/intl.zh-CN/产品定价/转换计费方式/按量付费转包年包月.md)
+-   [自动续费DDH](/intl.zh-CN/用户指南/开通自动续费.md)或[手动续费DDH](/intl.zh-CN/用户指南/手动续费DDH.md)
+
+## 产品定价
+
+DDH支持包年包月。更多详情，请参见[计费概述](/intl.zh-CN/产品定价/计费概述.md)。
 
