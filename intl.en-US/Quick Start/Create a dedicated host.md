@@ -19,13 +19,13 @@ This topic describes how to create a subscription dedicated host in the Elastic 
 
     2.  **Region**: Select a region and a zone where you want to create a dedicated host.
 
-        For example, to create a dedicated host in the China \(Beijing\) region, select **China \(Beijing\)** from the drop-down list. For more information, see[Regions and zones](https://www.alibabacloud.com/help/doc-detail/123712.htm).
+        For example, to create a dedicated host in the China \(Beijing\) region, select **China \(Beijing\)** from the drop-down list. For more information, see [Regions and zones](https://www.alibabacloud.com/help/doc-detail/123712.htm).
 
     3.  **Dedicated Host Type**, **DDH Name**, and Quantity: Select a dedicated host type, enter a dedicated host name, and then specify the number of dedicated hosts that you want to purchase.
 
         The dedicated host type determines the instance family and the maximum number of ECS instances that you can deploy on the dedicated host. The host types g6s, c6s, and r6s allow you to customize the vCPU-to-memory ratio. This allows you to flexibly allocate computing resources when you create ECS instances. For more information about dedicated host types, see [Dedicated host types](/intl.en-US/Product Introduction/Dedicated host types.md).
 
-        **Note:** ECS instances on local SSD i2 dedicated hosts do not support manual migration and automatic failover. If a local SSD i2 dedicated host fails, you can[submit a ticket](https://workorder-intl.console.aliyun.com/#/overview) to apply for manual migration. However, the data on local disks will be lost after the migration.
+        **Note:** ECS instances on local SSD i2 dedicated hosts do not support manual migration and automatic failover. If a local SSD i2 dedicated host fails, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/overview) to apply for manual migration. However, the data on local disks will be lost after the migration.
 
     4.  Add tags.
 
@@ -43,7 +43,7 @@ This topic describes how to create a subscription dedicated host in the Elastic 
         -   If you do not select Allow Automatic Deployment, you must specify a dedicated host when you create an ECS instance.
 The Allow Automatic Deployment option is selected by default. |
         |**Automatic Instance Migration upon DDH Failure**|        -   If you select Automatic Instance Migration upon DDH Failure, ECS instances on a dedicated host are automatically migrated to another dedicated host if the original dedicated host fails.
-        -   If you do not select this option, you must[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for a new dedicated host if the original dedicated host fails.
+        -   If you do not select this option, you must [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for a new dedicated host if the original dedicated host fails.
 The Automatic Instance Migration upon DDH Failure option is selected by default. You can modify this setting after the dedicated host is created. For more information, see [Modify the settings of automatic instance migration for a dedicated host](/intl.en-US/User Guide/Modify the settings of automatic instance migration for a dedicated host.md).
 
 **Note:** This option is unavailable for local SSD i2 dedicated hosts. |
