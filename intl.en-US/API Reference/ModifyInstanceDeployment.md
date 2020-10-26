@@ -1,118 +1,122 @@
-# ModifyInstanceDeployment {#ModifyInstanceDeployment .reference}
+# ModifyInstanceDeployment
 
-You can call this operation to change the host of an Elastic Compute Service \(ECS\) instance to another host in the same region.
+You can call this operation to modify the deployment set of an ECS instance or migrate an instance to a dedicated host. You can change the instance type when you migrate the instance.
 
-## Description {#section_i5w_p32_lfb .section}
+## Description
 
-You can call the ModifyInstanceDeployment operation to complete the following tasks:
+Before you migrate an instance to a dedicated host or change the instance type when you migrate an instance, take note of the following items:
 
--   Change the deployment set of an ECS instance. For example, you can add an ECS instance to a deployment set or change the deployment set of an ECS instance. The DeploymentSetId parameter is required for this task.
+-   The instance is in the **Stopped** state before migration. The instance is automatically restarted after migration.
+-   You can migrate only VPC-type instances.
+-   The instance and the dedicated host must belong to the same region and zone and be in the same account.
+-   A pay-as-you-go instance can be migrated to a subscription dedicated host. A subscription instance can only be migrated between subscription dedicated hosts. The expiration date of the subscription instance cannot be later than that of the destination dedicated host.
+-   When you migrate an instance from a shared host to a dedicated host, the instance must be a pay-as-you-go instance. It cannot be a subscription or preemptible instance.
+-   You can redeploy an ECS instance in a specific dedicated host cluster.
 
-    **Note:** You cannot change the deployment set when modifying the Dedicated Host \(DDH\) parameters, including Tenancy, Affinity, and DedicatedHostId.
+## Debugging
 
--   Migrate an ECS instance to a DDH. The following table describes some scenarios.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ModifyInstanceDeployment&type=RPC&version=2014-05-26)
 
-    |Scenario|Parameter setting|Execution result|
-    |:-------|:----------------|:---------------|
-    |Migrate an ECS instance from a shared host to a DDH.|DedicatedHostId: Specify the DDH ID.|The ECS instance is migrated to the specified DDH.|
-    |Set the following parameters:     -   DedicatedHostId: Leave this parameter empty.
-    -   Tenancy: Set this parameter to host.
- |Alibaba Cloud automatically selects a DDH to host the ECS instance.|
-    |Migrate an ECS instance between two DDHs.|DedicatedHostId: Specify the DDH ID.|The ECS instance is migrated to the specified DDH.|
-    |Set the following parameters:     -   DedicatedHostId: Leave this parameter empty.
-    -   Tenancy: Set this parameter to host.
- |Alibaba Cloud automatically selects a DDH to host the ECS instance.|
+## Request parameters
 
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|ModifyInstanceDeployment|The operation that you want to perform. Set the value to ModifyInstanceDeployment. |
+|InstanceId|String|Yes|i-bp67acfmxazb4ph\*\*\*|The ID of the instance. The instance must be in the **Stopped** state. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the instance. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|DeploymentSetId|String|No|ds-bp67acfmxazb4ph\*\*\*\*|The ID of the deployment set.
 
-When migrating an ECS instance to a DDH, note the following information:
+This parameter is required when you add an ECS instance to a deployment set or change the deployment set of an instance.
 
--   Ensure that the ECS instance is in the Stopped state before migration. The instance is automatically restarted after migration.
--   You can migrate only VPC-connected ECS instances.
--   The target DDH and the ECS instance to be migrated must have the same billing method.
--   When you migrate an ECS instance from a shared host to a DDH, the billing method of the ECS instance must be pay-as-you-go. You cannot migrate subscription instances or preemptible instances.
+**Note:** You cannot change the deployment set when you modify the dedicated host-related parameters, which are `Tenancy`, `Affinity`, and `DedicatedHostId`. |
+|Force|Boolean|No|false|Specifies whether to forcibly change the host. Default value: false. Valid values:
 
-## Request parameters {#RequestParameter .section}
+-   true: forcibly changes the host of the instance. You can restart instances that are in the **Running** or **Stopped** state.
 
-|Parameter|Type|Required|Description|
-|:--------|:---|:-------|:----------|
-|Action|String|Yes|The operation that you want to perform. Set this parameter to ModifyInstanceDeployment.|
-|RegionId|String|Yes|The region ID of the ECS instance.For more information, call [DescribeRegions](../../intl.en-US/API Reference/Regions/DescribeRegions.md#) to obtain the latest region list.|
-|InstanceId|String|Yes|The ID of the ECS instance. The instance must be in the `Stopped` or `Running` state.|
-|DeploymentSetId|String|No|The ID of the deployment set.|
-|DedicatedHostId|String|No|The ID of the DDH. You can call the [DescribeDedicatedHosts](intl.en-US/API Reference/DescribeDedicatedHosts.md#) operation to view the available DDHs.|
-|Force|Boolean|No|Specifies whether the host can be changed for the ECS instance. Valid values: -   true: specifies that the host can be changed for the instance. You can also restart a **Running** instance, a **Stopped** subscription instance, or a **Stopped** pay-as-you-go instance that is still billed.
--   false: specifies that the host cannot be changed for the instance. You can only add the instance on the current host to a deployment set. This may cause the ModifyInstanceDeployment operation to fail.
+**Note:** The instances in the Stopped state do not include pay-as-you-go instances that have the No Fees for Stopped Instances \(VPC-Connected\) feature enabled.
 
- Default value: `false`.
+-   false: does not forcibly change the host of the instance. The instance can only be added to a deployment set when it is on the current host. When the Force parameter is set to this value, the replacement of the deployment set may fail. |
+|DedicatedHostId|String|No|dh-bp67acfmxazb4ph\*\*\*\*|The ID of the dedicated host. You can call the [DescribeDedicatedHosts](~~134242~~) operation to query available dedicated hosts.
 
- |
-|Tenancy|String|No|Specifies whether the ECS instance is deployed on a DDH. Valid values: host: specifies that the instance is deployed on a DDH.
+When you migrate the instance from a shared host to a dedicated host or migrate the instance between dedicated hosts:
 
- For more information, see the scenario description in [ModifyInstanceDeployment](#table_sas_j9h_0l4).
+-   To migrate the instance to a specific dedicated host, you must specify this parameter.
+-   To migrate the instance to an automatically selected dedicated host, you must leave this parameter empty and set `Tenancy` to host.
 
- |
-|Affinity|String|No|Specifies whether the ECS instance is associated with a DDH. Valid values: -   host: specifies that the instance is associated with a DDH. After a stopped instance that is not billed is restarted, it is still hosted on the original DDH.
--   default: specifies that the instance is not associated with a DDH. After a stopped instance that is not billed is restarted, if the original DDH has insufficient resources, the instance can be migrated to another DDH in the automatic deployment resource pool.
+For more information about the automatic deployment feature, see [Features of dedicated hosts](~~118938~~). |
+|Tenancy|String|No|host|Specifies whether to deploy the instance on a dedicated host. Set the value to host, which indicates that the instance is deployed on a dedicated host. |
+|Affinity|String|No|host|Specifies whether to associate the instance with a dedicated host. Valid values:
 
- When the instance is migrated from a shared host to a DDH, the default value is `default`.
+-   host: The instance is associated with a dedicated host. With the No Fees for Stopped Instances \(VPC-Connected\) feature enabled, when the instance is restarted after it is stopped, it still resides on the original dedicated host.
+-   default: The instance is not associated with a dedicated host. With the No Fees for Stopped Instances \(VPC-Connected\) feature enabled, when the instance is restarted after it is stopped, it can be automatically deployed to another dedicated host in the automatic deployment resource pool if resources of the original dedicated host are insufficient.
 
- |
+When the instance is migrated from a shared host to a dedicated host, the default value is default. |
+|MigrationType|String|No|live|Specifies whether to stop the instance before it is migrated to the destination dedicated host. Default value: reboot. Valid values:
 
-## Response parameters {#ResponseParameter .section}
+-   reboot: stops the instance before migration.
+-   live: migrates the instance without stopping it. If the MigrationType parameter is set to this value, you must specify the **DedicatedHostId** parameter. In this case, you cannot change the instance type when you migrate the instance. |
+|InstanceType|String|No|ecs.c6.large|The instance type to which the instance is changed. You can call the [DescribeInstanceTypes](~~25620~~) operation to query the most recent list of instance types.
 
-All are common response parameters. See [Common response parameters](../../intl.en-US/API Reference/Getting started/Common parameters.md#commonResponseParameters).
+You can change the instance type of the instance when you migrate the instance to a dedicated host. The destination instance type must match the type of the specified dedicated host. For more information, see [Dedicated host types](~~68564~~).
 
-## Examples {#section_q0h_l47_qfv .section}
+-   If you specify this parameter, you must also specify the `DedicatedHostId` parameter.
+-   You cannot change the instance type if you use the automatic deployment feature to migrate the instance. |
+|DedicatedHostClusterId|String|No|dc-bp67acfmxazb4ph\*\*\*\*|The ID of the dedicated host cluster. |
 
-**Sample request** 
+## Response parameters
 
-``` {#codeblock_j69_zlq_r7q}
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|RequestId|String|04F0F334-1335-436C-A1D7-6C044FE73368|The ID of the request. |
+
+## Examples
+
+Sample requests
+
+```
 https://ecs.aliyuncs.com/?Action=ModifyInstanceDeployment
+&InstanceId=i-bp67acfmxazb4ph****
 &RegionId=cn-hangzhou
-&DeploymentSetId=ds-bp13v7bjnj9gisnlo1
+&DedicatedHostId=dh-bp67acfmxazb4ph****
+&Tenancy=host
+&MigrationType=live
 &<Common request parameters>
 ```
 
-**Sample success response** 
+Sample success responses
 
-**XML format**
+`XML` format
 
-``` {#codeblock_2zt_6am_mw8}
+```
 <ModifyInstanceDeploymentResponse>
-    <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
+      <RequestId>04F0F334-1335-436C-A1D7-6C044FE73368</RequestId>
 </ModifyInstanceDeploymentResponse>
 ```
 
- **JSON format** 
+`JSON` format
 
-``` {#codeblock_xu1_re8_s4k}
+```
 {
     "RequestId": "04F0F334-1335-436C-A1D7-6C044FE73368"
 }
 ```
 
-## Error codes {#ErrorCode .section}
+## Error codes
 
-|Error code|Error message|HTTP status code|Description|
-|:---------|:------------|:---------------|:----------|
-|DeploymentSet.InvalidId|The specified Deployment Set id doesn't exist.|400|The error message returned because the specified DeploymentSetId parameter does not exist.|
-|DeploymentSet.InstanceLimitExceeded|The number of instances on the specified Deployment Set has reached the limit.|403|The error message returned because the number of instances in the specified deployment set has exceeded the upper limit.|
-|IncorrectInstanceStatus|The current status of the resource does not support this operation.|403|The error message returned because the operation is not supported while the resource is in the current state.|
-|DeploymentSet.ModificationFailed|The modification of deployment set is currently impossible.|403|The error message returned because you cannot change the deployment set.|
-|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|404|The error message returned because the specified InstanceId parameter does not exist.|
-|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|404|The error message returned because the specified DedicatedHostId parameter does not exist.|
-|LackResource|There's no enough resource on the specified dedicated host.|400|The error message returned because the specified DDH is fully loaded.|
-|OperationDenied.UnstoppedInstance|Operation denied due to unstopped instancein your request.|400|The error message returned because the ECS instance that you want to migrate is not stopped. Stop the ECS instance before you migrate it to a DDH and try again.|
-|InvalidPeriod.ExceededDedidactedHost|Instance expired date can't exceed dedicated host expired date.|400|The error message returned because the expiration time of the subscription ECS instance is later than that of the DDH.|
-|InvalidInstanceNetworkType.NotSupport|The specified Instance network type not support.|404|The error message returned because the ECS instance that you want to migrate is not in a VPC. You can migrate only VPC-connected ECS instances.|
-|InvalidInstanceChargeType.NotSupport|The Dedicated host not support the specified Instance charge type.|404|The error message returned because the type of the ECS instance that you want to migrate is not supported. When you migrate an ECS instance from a shared host to a DDH, the billing method of the ECS instance must be pay-as-you-go. You cannot migrate subscription instances or preemptible instances.|
-|InvalidInstanceType.NotSupport|The Dedicated host not support the specified Instance type|404|The error message returned because the DDH does not support the type of the specified ECS instance.|
-|InvalidDedicatedHostStatus.NotSupport|Operation denied due to dedicated host status|400|The error message returned because your account has an overdue payment or the DDH is not available.|
-|InternalError|The request processing has failed due to some unknown error,exception or failure.|500|The error message returned because an internal error has occurred.|
-|LackResource|There's no enough dedicated host resource.|400|The error message returned because the DDH resources in the automatic deployment resource pool are insufficient.|
-|InvalidParameter.Param|Requested param is invalid.|400|The error message returned because the request parameters are invalid.|
-|InvalidParam.Tenancy|Instance tenancy is illegal in such case.|400|The error message returned because the specified Tenancy parameter is invalid.|
-|InvalidParam.DedicatedHostId|The specified dedicated host id is the same with present host id!|400|The error message returned because the specified DedicatedHostId parameter is the same as the ID of the DDH where the ECS instance is hosted.|
-|InvalidDedicatedHostId.NotSupport|Cannot choose instance present host as destination host.|404|The error message returned because you use the DDH where the ECS instance is hosted as the target DDH of the instance. Use another DDH as the target DDH of the instance and try again.|
-|InvalidDedicatedHost.NotFound|No available host.|404|The error message returned because no DDH is available.|
+|HTTP status code|Error code|Error message|Description|
+|----------------|----------|-------------|-----------|
+|404|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|The error message returned because the specified DedicatedHostId parameter does not exist.|
+|404|InvalidInstanceId.NotFound|The specified InstanceId does not exist.|The error message returned because the specified InstanceId parameter does not exist. Check whether the instance ID is correct.|
+|400|OperationDenied.UnstoppedInstance|Operation denied due to unstopped instance.|The error message returned because the current operation is invalid. Check whether the instance is in the Stopped state.|
+|400|InvalidDedicatedHostStatus.NotSupport|Operation denied due to dedicated host status.|The error message returned because the operation is not supported while the dedicated host is in the current state.|
+|400|InvalidPeriod.ExceededDedicatedHost|Instance expired date can't exceed dedicated host expired date.|The error message returned because the expiration date of the instance is later than that of the dedicated host.|
+|404|InvalidInstanceNetworkType.NotSupport|The specified Instance network type not support.|The error message returned because the network type of the current instance does not support this operation.|
+|404|InvalidInstanceType.NotSupport|The Dedicated host not support the specified instance type.|The error message returned because the current dedicated host does not support the specified instance type.|
+|403|IncorrectInstanceStatus|%s|The error message returned because this operation is not supported while the instance is in the current state.|
+|400|InvalidParam.Tenancy|The specified Tenancy is invalid.|The error message returned because the specified Tenancy parameter is invalid.|
+|403|OperationDenied.NoStock|The resource is out of usage.|The error message returned because the instance is not in the Running state. Start the instance or check whether the operation is valid.|
+|400|ChargeTypeViolation.PostPaidDedicatedHost|Prepaid instance onto postpaid dedicated host is not allowed.|The error message returned because subscription instances cannot be deployed on pay-as-you-go dedicated hosts.|
+|400|InvalidInstanceType.ValueNotSupported|The specified InstanceType does not exist or beyond the permitted range.|The error message returned because the specified instance type does not exist or you are not authorized to manage the instance type.|
+
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
