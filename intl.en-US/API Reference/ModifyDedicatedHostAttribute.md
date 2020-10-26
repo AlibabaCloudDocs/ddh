@@ -1,58 +1,74 @@
-# ModifyDedicatedHostAttribute {#ModifyDedicatedHostAttribute .reference}
+# ModifyDedicatedHostAttribute
 
-You can call this operation to modify the information about a Dedicated Host \(DDH\), including the name, description, and service unavailability attributes of the DDH.
+You can call this operation to modify some attributes of a dedicated host, such as the name, description, and instance migration policy that is applied when the dedicated host fails.
 
-## Request parameters {#RequestParameter .section}
+## Description
 
-|Parameter|Type|Required|Description|
-|:--------|:---|:-------|:----------|
-|Action|String|Yes|The operation that you want to perform. Set this parameter to ModifyDedicatedHostAttribute.|
-|RegionId|String|Yes|The region ID of the DDH.For more information, call [DescribeRegions](../../intl.en-US/API Reference/Regions/DescribeRegions.md#) to obtain the latest region list.|
-|DedicatedHostId|String|Yes|The ID of the DDH.|
-|DedicatedHostName|String|No|The name of the DDH.The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods \(.\), colons \(:\), underscores \(\_\), and hyphens \(-\).|
-|Description|String|No|The description of the DDH.It cannot begin with http:// or https://.|
-|ActionOnMaintenance|String|No|The method used to migrate the instances on the DDH when the DDH fails or needs to be repaired online. Valid values: -   Migrate: specifies that the instances are migrated to another physical server and restarted.
--   Stop: specifies that all the instances on the DDH are stopped. If the DDH cannot be repaired, the instances are migrated to another physical server and restarted.
+-   All the ECS instances that are hosted on a dedicated host must be in the Stopped \(`Stopped`\) state before you can modify the CPU overcommit ratio of the dedicated host.
+-   Modifications to the CPU overcommit ratio of a dedicated host does not affect the running status of the dedicated host. After a modification is complete, the number of allocated vCPUs on the dedicated host must not exceed the new total number of vCPUs. Otherwise, ECS instances that use the excess vCPUs cannot be started.
 
- When a cloud disk is attached to the DDH, the default value is Migrate.
+## Debugging
 
- When a local disk is attached to the DDH, the default value is Stop.
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates a sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ModifyDedicatedHostAttribute&type=RPC&version=2014-05-26)
 
- |
-|NetworkAttributes.SlbUdpTimeout|Integer|No|The timeout period of UDP sessions that are established with Server Load Balancer \(SLB\). Unit: seconds. Valid values: \[15, 310\].|
-|NetworkAttributes.UdpTimeout|Integer|No|The timeout period of UDP sessions that are established between users and cloud services running on the DDH. Unit: seconds. Valid values: \[15, 310\].|
-|AutoPlacement|String|No|Specifies whether the DDH is added to the automatic deployment resource pool. If you create an instance on a DDH without specifying the DedicatedHostId parameter, Alibaba Cloud automatically selects a DDH from the resource pool to host the instance. Valid values: -   on: adds the DDH to the automatic deployment resource pool.
--   off: does not add the DDH to the automatic deployment resource pool.
+## Request parameters
 
- |
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|ModifyDedicatedHostAttribute|The operation that you want to perform. Set the value to ModifyDedicatedHostAttribute. |
+|DedicatedHostId|String|Yes|dh-bp165p6xk2tlw61e\*\*\*\*|The ID of the dedicated host. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the dedicated host. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|DedicatedHostName|String|No|testDedicatedHostName|The name of the dedicated host. The name must be 2 to 128 characters in length and can contain letters, digits, colons \(:\), underscores \(\_\), and hyphens \(-\). It must start with a letter and cannot start with http:// or https://. |
+|Description|String|No|testDescription|The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://. |
+|ActionOnMaintenance|String|No|Migrate|The policy used to migrate the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
 
-## Response parameters {#ResponseParameter .section}
+-   Migrate: The instances are migrated to another physical server and restarted.
+-   Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical server and restarted.
 
-All are common response parameters. See [Common response parameters](../../intl.en-US/API Reference/Getting started/Common parameters.md#commonResponseParameters).
+If the dedicated host is attached with cloud disks, the default value is Migrate.
 
-## Examples {#Samples .section}
+If the dedicated host is attached with local disks, the default value is Stop. |
+|NetworkAttributes.SlbUdpTimeout|Integer|No|60|The timeout period for the UDP session between Server Load Balancer \(SLB\) and the dedicated host. Unit: seconds. Valid values: 15 to 310. |
+|NetworkAttributes.UdpTimeout|Integer|No|60|The timeout period for the UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310. |
+|AutoPlacement|String|No|on|Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the **DedicatedHostId** parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values:
 
- **Sample request** 
+-   on: adds the dedicated host to the resource pool for automatic deployment.
+-   off: does not add the dedicated host to the resource pool for automatic deployment.
+
+For information about automatic deployment, see [Features](~~118938~~). |
+|DedicatedHostClusterId|String|No|dc-bp165p6xk2tlw61e\*\*\*\*|The ID of the dedicated host cluster to which the dedicated host belongs. |
+|CpuOverCommitRatio|Float|No|1|The CPU overcommit ratio. You can configure CPU overcommit ratios only for the following dedicated host types: g6s, c6s, and r6s. Valid values: 1 to 5.
+
+The CPU overcommit ratio affects the number of available vCPUs on a dedicated host. You can use the following formula to calculate the number of available vCPUs on a dedicated host: Number of available vCPUs = Number of physical CPU cores × 2 × CPU overcommit ratio. For example, the number of physical CPU cores on each g6s dedicated host is 52. If you change the CPU overcommit ratio of a g6s dedicated host to 4, the number of available vCPUs on the dedicated host is 416. For scenarios that have minimal requirements for CPU stability or where CPU load is not heavy, such as development and test environments, you can increase the number of available vCPUs on a dedicated host by increasing the CPU overcommit ratio. This way, you can deploy more ECS instances of the same specifications on the dedicated host and reduce the unit deployment cost. |
+
+## Response parameters
+
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|RequestId|String|2A4EA075-CB5B-41B7-B0EB-70D339F64DE7|The ID of the request. |
+
+## Examples
+
+Sample requests
 
 ```
-https://ecs.aliyuncs.com/?Action=ModifyDedicatedHostAttribute
+http(s)://ecs.aliyuncs.com/? Action=ModifyDedicatedHostAttribute
+&DedicatedHostId=dh-bp165p6xk2tlw61e****
 &RegionId=cn-hangzhou
-&DedicatedHostId=dh-dedicatedhost1
-&Description=hello-world
 &<Common request parameters>
 ```
 
- **Sample success response** 
+Sample success responses
 
-**XML format**
+`XML` format
 
 ```
 <ModifyDedicatedHostAttributeResponse>
-  <RequestId>2A4EA075-CB5B-41B7-B0EB-70D339F64DE7</RequestId>
+    <RequestId>2A4EA075-CB5B-41B7-B0EB-70D339F64DE7</RequestId>
 </ModifyDedicatedHostAttributeResponse>
 ```
 
- **JSON format** 
+`JSON` format
 
 ```
 {
@@ -60,13 +76,16 @@ https://ecs.aliyuncs.com/?Action=ModifyDedicatedHostAttribute
 }
 ```
 
-## Error codes {#ErrorCode .section}
+## Error codes
 
-|Error code|Error message|HTTP status code|Description|
-|:---------|:------------|:---------------|:----------|
-|InvalidInstanceName.Malformed|The specified parameter DedicatedHostName is not valid.|400|The error message returned because the specified DedicatedHostName parameter is invalid.|
-|InvalidDescription.Malformed|The specified parameter Description is not valid.|400|The error message returned because the specified Description parameter is invalid.|
-|InvalidUser.Unauthorized|The user is not authorized|401|The error message returned because you are not authorized to modify the information about this DDH.|
-|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|404|The error message returned because the specified DedicatedHostId parameter does not exist.|
-|InternalError|The request processing has failed due to some unknown error,exception or failure.|500|The error message returned because an internal error has occurred.|
+|HTTP status code|Error code|Error message|Description|
+|----------------|----------|-------------|-----------|
+|404|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|The error message returned because the specified DedicatedHostId parameter does not exist.|
+|400|InvalidDedicatedHostName.Malformed|The specified parameter DedicatedHostName is not valid.|The error message returned because the specified DedicatedHostName parameter is invalid.|
+|400|InvalidDescription.Malformed|The specified parameter Description is not valid.|The error message returned because the specified Description parameter is invalid. The description must be 2 to 256 characters in length and cannot start with http:// or https://.|
+|403|InvalidUser.Unauthorized|The user is not authorized|The error message returned because you are not authorized to perform this operation.|
+|400|InvalidParameter.SlbUdpTimeout|The specified value is invalid.|The error message returned because the specified NetworkAttributes.SlbUdpTimeout parameter is invalid.|
+|400|InvalidParameter.UdpTimeout|The specified value is invalid.|The error message returned because the specified NetworkAttributes.UdpTimeout parameter is invalid.|
+
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
