@@ -25,7 +25,7 @@
 |DedicatedHostClusterName|String|否|myDDHCluster|专有宿主机集群的名称。长度为2~128个英文或中文字符，必须以大小字母或中文开头，可包含数字、英文句号（.）、下划线（\_）或连字符（-）。不能包含`http://`和`https://`。
 
  默认值：空 |
-|Description|String|否|This-is-my-DDHCluster|专有宿主机的描述。长度为2~256个字符。不能以`http://`和`https://`开头。
+|Description|String|否|This-is-my-DDHCluster|专有宿主机集群的描述。长度为2~256个字符。不能以`http://`和`https://`开头。
 
  默认值：空 |
 
@@ -74,8 +74,8 @@ https://ecs.aliyuncs.com/?Action=CreateDedicatedHostCluster
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |404|InvalidResourceGroup.NotFound|The ResourceGroup provided does not exist in our records.|资源组并不在记录中。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |400|Duplicate.TagKey|The Tag.N.Key contain duplicate key.|标签中存在重复的键，请保持键的唯一性。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Ecs)查看更多错误码。
