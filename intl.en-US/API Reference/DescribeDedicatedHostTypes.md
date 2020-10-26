@@ -1,135 +1,121 @@
-# DescribeDedicatedHostTypes {#DescribeDedicatedHostTypes .reference}
+# DescribeDedicatedHostTypes
 
-You can call this operation to query details about supported DDH types in the specified region, or supported ECS instance type families on a DDH.
+You can call this operation to query the details about dedicated host types supported in a region, or the ECS instance families supported by a specific dedicated host type.
 
-## Request parameters {#RequestParameter .section}
+## Debugging
 
-|Name|Type|Required|Description|
-|:---|:---|:-------|:----------|
-|Action|String|Yes|The operation that you want to perform. Set the value to DescribeDedicatedHostTypes|
-|RegionId|String|Yes|The ID of the region.For more information, call [DescribeRegions](../../intl.en-US/API Reference/Regions/DescribeRegions.md#) to obtain the latest region list.|
-|DedicatedHostType|String|No|The type of the DDH. For more information, see [Dedicated Host types](https://www.alibabacloud.com/help/doc-detail/68564.htm).|
-|SupportedInstanceTypeFamily|String|No|The ECS instance type family supported by a DDH type.|
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates a sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=DescribeDedicatedHostTypes&type=RPC&version=2014-05-26)
 
-## Response parameters {#ResponseParameter .section}
+## Request parameters
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|DedicatedHostTypes|Array of [DedicatedHostType](#)|The information about the DDH type.|
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|DescribeDedicatedHostTypes|The operation that you want to perform. Set the value to DescribeDedicatedHostTypes. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the dedicated host. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|DedicatedHostType|String|No|ddh.sn1ne|The dedicated host type. For more information, see [Dedicated host types](~~68564~~). |
+|SupportedInstanceTypeFamily|String|No|ecs.sn1ne|The ECS instance family supported by the dedicated host type. |
 
-**DedicatedHostType**
+## Response parameters
 
-|Name|Type|Required|
-|:---|:---|:-------|
-|DedicatedHostType|String|The type of the DDH. [open a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)Submit a ticket if you need more DDH types.|
-|SupportedInstanceTypeFamilies|Array of [SupportedInstanceTypeFamilySetType](#)|The ECS instance type family supported by the DDH type.|
-|Sockets|Integer|The number of physical CPUs.|
-|Cores|Integer|The number of cores in a physical CPU.|
-|TotalVcpus|Integer|The total number of cores in a virtual CPU.|
-|MemorySize|Float|The capacity of memory. Unit: GiB.|
-|LocalStorageCapacity|Long|The capacity of a local disk. Unit: GiB.|
-|LocalStorageAmount|Integer |The number of local disks on a DDH.|
-|LocalStorageCategory|String|The type of a local disk.|
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|DedicatedHostTypes|Array of DedicatedHostType| |The information about the dedicated host type. |
+|DedicatedHostType| | | |
+|Cores|Integer|2|The number of cores in a single physical CPU. |
+|CpuOverCommitRatioRange|String|1-5|The supported CPU overcommit ratio range. |
+|DedicatedHostType|String|ddh.sn1ne|The type of the dedicated host. You can submit a ticket to request more dedicated host types. |
+|GPUSpec|String|gpu|The GPU model. |
+|LocalStorageAmount|Integer|0|The number of local disks on a dedicated host. |
+|LocalStorageCapacity|Long|0|The capacity of a local disk. Unit: GiB. |
+|LocalStorageCategory|String|local|The category of the local disks. |
+|MemorySize|Float|112.0|The size of the memory. Unit: GiB. |
+|PhysicalGpus|Integer|2|The number of physical GPUs. |
+|Sockets|Integer|2|The number of physical CPUs. |
+|SupportCpuOverCommitRatio|Boolean|true|Indicates whether the CPU overcommit ratio setting is supported. |
+|SupportedInstanceTypeFamilies|List|ecs.sn1ne|The ECS instance families supported by the dedicated host. |
+|SupportedInstanceTypesList|List|ecs.sn1ne.large|The ECS instance types supported by the dedicated host. |
+|TotalVcpus|Integer|56|The total number of vCPUs. |
+|TotalVgpus|Integer|10|The total number of vGPUs. |
+|RequestId|String|5FE5FF06-3A33-4658-8495-6445FC54E327|The ID of the request. |
 
-**SupportedInstanceTypeFamilySetType**
+## Examples
 
-|Name|Type|Required|
-|:---|:---|:-------|
-|SupportedInstanceTypeFamily|String|The ECS instance type family supported by a DDH type.|
-
-## Samples {#Samples .section}
-
-**Sample requests**
+Sample requests
 
 ```
 https://ecs.aliyuncs.com/?Action=DescribeDedicatedHostTypes
 &RegionId=cn-hangzhou
-&<Common Request Parameters>
+&<Common request parameters>
 ```
 
-**Sample responses**
+Sample success responses
 
-**XML format**
+`XML` format
 
 ```
 <DescribeDedicatedHostTypesResponse>
-  <DedicatedHostTypes>
-    <DedicatedHostType>
-      <LocalStorageAmount>0</LocalStorageAmount>
-      <Sockets>2</Sockets>
-      <DedicatedHostType>ddh.sn1ne</DedicatedHostType>
-      <LocalStorageCapacity>0</LocalStorageCapacity>
-      <SupportedInstanceTypeFamilies>
-        <SupportedInstanceTypeFamily>ecs.sn1ne</SupportedInstanceTypeFamily>
-      </SupportedInstanceTypeFamilies>
-      <MemorySize>112.0</MemorySize>
-      <Cores>32</Cores>
-      <TotalVcpus>56</TotalVcpus>
-      <LocalStorageCategory/>
-    </DedicatedHostType>
-    <DedicatedHostType>
-      <LocalStorageAmount>0</LocalStorageAmount>
-      <Sockets>2</Sockets>
-      <DedicatedHostType>ddh.sn2ne</DedicatedHostType><Dedicatedhosttype> DDH. sn2ne </dedicatedhosttype>
-      <LocalStorageCapacity>0</LocalStorageCapacity>
-      <SupportedInstanceTypeFamilies>
-        <SupportedInstanceTypeFamily>ecs.sn2ne</SupportedInstanceTypeFamily>
-      </SupportedInstanceTypeFamilies></FIG>
-      <MemorySize>224.0</MemorySize>
-      <Cores>32</Cores>
-      <TotalVcpus>56</TotalVcpus>
-      <LocalStorageCategory/>
-    </DedicatedHostType>
-  </DedicatedHostTypes>
-  <RequestId>5FE5FF06-3A33-4658-8495-6445FC54E327</RequestId>
+      <RequestId>E7676157-C48A-445A-BFCB-6669EDE8DA3D</RequestId>
+      <DedicatedHostTypes>
+            <DedicatedHostType>
+                  <PhysicalGpus>0</PhysicalGpus>
+                  <MemorySize>180</MemorySize>
+                  <LocalStorageCapacity>0</LocalStorageCapacity>
+                  <DedicatedHostType>ddh.c6s</DedicatedHostType>
+                  <LocalStorageAmount>0</LocalStorageAmount>
+                  <Cores>52</Cores>
+                  <LocalStorageCategory></LocalStorageCategory>
+                  <Sockets>2</Sockets>
+                  <GPUSpec></GPUSpec>
+                  <SupportedInstanceTypeFamilies>
+                        <SupportedInstanceTypeFamily>ecs.ddh6s.custom</SupportedInstanceTypeFamily>
+                  </SupportedInstanceTypeFamilies>
+                  <TotalVgpus>0</TotalVgpus>
+                  <CpuOverCommitRatioRange>1-5</CpuOverCommitRatioRange>
+                  <SupportedInstanceTypesList>
+            </SupportedInstanceTypesList>
+                  <SupportCpuOverCommitRatio>true</SupportCpuOverCommitRatio>
+                  <TotalVcpus>520</TotalVcpus>
+            </DedicatedHostType>
+      </DedicatedHostTypes>
 </DescribeDedicatedHostTypesResponse>
 ```
 
-**JSON format**
+`JSON` format
 
 ```
 {
-    "DedicatedHostTypes":{
-        "DedicatedHostType":[
+    "RequestId": "E7676157-C48A-445A-BFCB-6669EDE8DA3D",
+    "DedicatedHostTypes": {
+        "DedicatedHostType": [
             {
-                "LocalStorageAmount":0,
-                "Sockets":2,
-                "DedicatedHostType":"ddh.sn1ne",
-                "LocalStorageCapacity":0,
-                "SupportedInstanceTypeFamilies":{
-                    "SupportedInstanceTypeFamily":[
-                        "ecs.sn1ne",
+                "PhysicalGpus": 0,
+                "MemorySize": 180,
+                "LocalStorageCapacity": 0,
+                "DedicatedHostType": "ddh.c6s",
+                "LocalStorageAmount": 0,
+                "Cores": 52,
+                "LocalStorageCategory": "",
+                "Sockets": 2,
+                "GPUSpec": "",
+                "SupportedInstanceTypeFamilies": {
+                    "SupportedInstanceTypeFamily": [
+                        "ecs.ddh6s.custom"
                     ]
                 },
-                "MemorySize": 1
-                "Cores":32,
-                "TotalVcpus":56,
-                "LocalStorageCategory":""
-            },
-            {
-                "LocalStorageAmount":0,
-                "Sockets":2,
-                "DedicatedHostType":"dh.c60m83.n1",
-                "LocalStorageCapacity":0,
-                "SupportedInstanceTypeFamilies":{
-                    "SupportedInstanceTypeFamily":[
-                        "ecs.n1"
-                    ]
+                "TotalVgpus": 0,
+                "CpuOverCommitRatioRange": "1-5",
+                "SupportedInstanceTypesList": {
+                    "SupportedInstanceTypesList": []
                 },
-                "MemorySize": 1
-                "Cores":32,
-                "TotalVcpus":40,"Maid": 40,
-                "LocalStorageCategory":"""Maid ":""
+                "SupportCpuOverCommitRatio": true,
+                "TotalVcpus": 520
             }
         ]
-    },
-    "RequestId":"9A0FE8A2-720C-45AE-B2D9-813060FCBBF5"
+    }
 }
 ```
 
-## Error codes {#ErrorCode .section}
+## Error codes
 
-|Error code|Error message|HTTP status code |Description|
-|:---------|:------------|:----------------|:----------|
-|InternalError|The request processing task has failed due to an unknown error, exception or failure.|500|The error message returned when an unknown internal error occurs.|
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
