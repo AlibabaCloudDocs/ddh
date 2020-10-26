@@ -14,7 +14,7 @@
 |DedicatedHostClusterId|String|是|dc-bp12wlf6am0vz9v2\*\*\*\*|专有宿主机集群ID。 |
 |RegionId|String|是|cn-hangzhou|专有宿主机集群所在的地域ID。您可以调用[DescribeRegions](~~25609~~)查看最新的阿里云地域列表。 |
 |DedicatedHostClusterName|String|否|newClusterName|专有宿主机集群的名称。长度为2~128个英文或中文字符，必须以大小字母或中文开头，可包含数字、英文句号（.）、下划线（\_）或连字符（-）。不能包含`http://`和`https://`。 |
-|Description|String|否|newClusterDescription|专有宿主机的描述。长度为2~256个字符。不能以`http://`和`https://`开头。 |
+|Description|String|否|newClusterDescription|专有宿主机集群的描述。长度为2~256个字符。不能以`http://`和`https://`开头。 |
 
 ## 返回数据
 
