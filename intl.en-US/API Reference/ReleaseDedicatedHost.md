@@ -1,41 +1,51 @@
-# ReleaseDedicatedHost {#ReleaseDedicatedHost .reference}
+# ReleaseDedicatedHost
 
-To release a Pay-As-You-Go DDH, make sure that no ECS instance is deployed on the DDH.
+You can call this operation to release a pay-as-you-go dedicated host.
 
-## Request parameters {#RequestParameter .section}
+## Description
 
-|Name|Type|Required|Description|
-|:---|:---|:-------|:----------|
-|Action|String|Yes|The operation that you want to perform. Set the value to ReleaseDedicatedHost.|
-|RegionId|String|Yes|The ID of the region where the DDH is created.For more information, call [DescribeRegions](../../intl.en-US/API Reference/Regions/DescribeRegions.md#) to obtain the latest region list.|
-|DedicatedHostId|String|Yes|The ID of the DDH.|
+Before you release a pay-as-you-go dedicated host, make sure that no ECS instances are deployed on the dedicated host.
 
-## Response parameters {#ResponseParameter .section}
+## Debugging
 
-All are common response parameters. See [Common response parameters](../../intl.en-US/API Reference/Getting started/Common parameters.md#commonResponseParameters).
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs&api=ReleaseDedicatedHost&type=RPC&version=2014-05-26)
 
-## Examples {#Samples .section}
+## Request parameters
 
-**Sample requests** 
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|ReleaseDedicatedHost|The operation that you want to perform. Set the value to ReleaseDedicatedHost. |
+|DedicatedHostId|String|Yes|dh-bp199lyny9b3\*\*\*\*|The ID of the dedicated host. |
+|RegionId|String|Yes|cn-hangzhou|The region ID of the dedicated host. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+
+## Response parameters
+
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|RequestId|String|A1B15AC8-E6F6-49A4-8985-8C07104B9199|The ID of the request. |
+
+## Examples
+
+Sample requests
 
 ```
-https://ecs.aliyuncs.com/?Action=ReleaseDedicatedHost
+http(s)://ecs.aliyuncs.com/?Action=ReleaseDedicatedHost
+&DedicatedHostId=dh-bp199lyny9b3****
 &RegionId=cn-hangzhou
-&DedicatedHostId=dh-dedicatedhost1
 &<Common request parameters>
 ```
 
-**Sample responses**
+Sample success responses
 
-**XML format**
+`XML` format
 
 ```
 <ReleaseDedicatedHostResponse>
-  <RequestId>A1B15AC8-E6F6-49A4-8985-8C07104B9199</RequestId>
+    <RequestId>A1B15AC8-E6F6-49A4-8985-8C07104B9199</RequestId>
 </ReleaseDedicatedHostResponse>
 ```
 
-**JSON format**
+`JSON` format
 
 ```
 {
@@ -43,14 +53,15 @@ https://ecs.aliyuncs.com/?Action=ReleaseDedicatedHost
 }
 ```
 
-## Error codes {#ErrorCode .section}
+## Error codes
 
-Error codes specific to this interface are as follows. For more information, see [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
+|HttpCode|Error code|Error message|Description|
+|--------|----------|-------------|-----------|
+|403|InstanceExist|Instance exists on the dedicated host.|The error message returned because ECS instances exist on the dedicated host. You must remove the instances before you can release the dedicated host.|
+|400|ChargeTypeViolation|The operation is not permitted due to charge type of the dedicated host.|The error message returned because the billing method of the dedicated host does not support the operation.|
+|400|IncorrectHostStatus.Initializing|The specified dedicatedHost status is not support this operation|The error message returned because the operation is not supported while the dedicated host is in the current state.|
+|404|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|The error message returned because the specified DedicatedHostId parameter does not exist.|
+|500|InternalError|The request processing has failed due to some unknown error.|The error message returned because an internal error has occurred. Try again later. If the problem persists, submit a ticket.|
 
-|Error code|Error message|HTTP status code|Description|
-|:---------|:------------|:---------------|:----------|
-|InstanceExist|Instance exists on the dedicated host.|400|The error message returned when ECS instances are deployed on the specified DDH. You must release these instances first.|
-|OperationDenied.NotAuthorized|End user is not authorized to release the dedicated host.|403|The error message returned when you are not authorized to release the DDH.|
-|InvalidDedicatedHostId.NotFound|The specified DedicatedHostId does not exist.|404|The error message returned when the specified DDH ID does not exist.|
-|InternalError|The request processing has failed due to some unknown error, exception or failure.|500|The error message returned when an unknown internal error occurs.|
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Ecs).
 
