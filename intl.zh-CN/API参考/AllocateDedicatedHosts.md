@@ -58,7 +58,7 @@
  **说明：** 若您不希望专有宿主机加入自动部署资源池，请将该参数设置为off。 |
 |CpuOverCommitRatio|Float|否|1|CPU超卖比。仅自定义规格g6s、c6s、r6s支持设置CPU超卖比。取值范围：1~5
 
- CPU超卖比影响DDH的可用vCPU数，一台DDH的可用vCPU数=物理CPU核数\*2\*CPU超卖比。例如，g6s的物理CPU核数为52，如果设置CPU超卖比为4，则DDH创建完成后vCPU总数显示为412。针对CPU绝对稳定性要求不严苛或CPU负载不高的场景，例如开发测试环境，提升超卖比可以提升可用vCPU数，用于部署更多同等规格的ECS实例，降低单位部署成本。 |
+ CPU超卖比影响DDH的可用vCPU数，一台DDH的可用vCPU数=物理CPU核数\*2\*CPU超卖比。例如，g6s的物理CPU核数为52，如果设置CPU超卖比为4，则DDH创建完成后vCPU总数显示为416。针对CPU绝对稳定性要求不严苛或CPU负载不高的场景，例如开发测试环境，提升超卖比可以提升可用vCPU数，用于部署更多同等规格的ECS实例，降低单位部署成本。 |
 |ChargeType|String|否|PrePaid|专有宿主机的计费方式。取值范围：
 
  -   PrePaid：包年包月。选择包年包月时，请确认您的支付方式支持信用额度支付，否则会提示InvalidPayMethod。
@@ -165,14 +165,14 @@ https://ecs.aliyuncs.com/?Action=AllocateDedicatedHosts
 |403|InvalidDedicatedHostType.ValueNotSupported|The specified DedicatedHostType does not exist or beyond the permitted range.|指定的宿主机规格不存在。|
 |403|InvalidDedicatedHostType.ZoneNotSupported|The specified zone does not support this dedicatedHostType.|指定可用区不支持指定宿主机规格。|
 |400|InvalidAutoRenewPeriod.ValueNotSupported|The specified autoRenewPeriod is not valid.|指定的参数AutoRenewPeriod不合法。|
-|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键不合法。|
+|400|InvalidTagKey.Malformed|The specified Tag.n.Key is not valid.|指定的标签键参数有误。|
 |400|InvalidDedicatedHostType.ValueNotSupported|%s|指定的专有宿主机类型无效。|
 |400|RegionUnauthorized|%s|该地域未被授权。|
 |500|InternalError|%s|内部错误。|
 |400|Zone.NotOnSale|%s|该可用区暂时关闭了售卖。|
 |400|OperationDenied|The specified DedicatedHostType or Zone is not available or not authorized.|指定宿主机规格、可用区不可用或者没有操作的权限。|
 |400|InvalidPeriodUnit.ValueNotSupported|The specified parameter PeriodUnit is not valid.|参数PeriodUnit无效。|
-|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值不合法。|
+|400|InvalidTagValue.Malformed|The specified Tag.n.Value is not valid.|指定的标签值参数有误。|
 |403|InvalidParameter.NotMatch|%s|您输入的参数无效，请检查参数之间是否冲突。|
 |403|Account.Arrearage|Your account has been in arrears.|账户余额不足，请先充值再操作。|
 |400|QuotaExceed.AfterpayDedicatedHost|The maximum number of Pay-As-You-Go DedicatedHosts is exceeded: %s|按量付费的宿主机库存不足，请减少创建数量。|
