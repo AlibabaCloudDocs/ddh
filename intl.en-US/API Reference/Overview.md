@@ -1,37 +1,34 @@
-# Overview {#DDHApiWelcome .concept}
+# Overview
 
-Alibaba Cloud Dedicated Host \(DDH\) provides you with multiple APIs. We recommend that you use APIs to manage your cloud resources or develop applications.
+This topic describes how to make API requests. You can call API operations by sending HTTP or HTTPS GET requests based on URLs.
 
-## Limits {#section_otf_b2h_4fb .section}
+## Limits
 
-There are limits to the number and specifications of dedicated hosts you can create. For more information, see [Limits](../../../../../dita-oss-bucket/SP_68/DNDDH11820440/EN-US_TP_6622.md#). When interface descriptions, optional parameter values, and available specifications are not consistent with [Limits](../../../../../dita-oss-bucket/SP_68/DNDDH11820440/EN-US_TP_6622.md#), **Limits** are applied.
+You can create only a specified number and specified types of dedicated hosts. For more information, see [Limits](/intl.en-US/Product Introduction/Limits.md).
 
-## Developer options {#section_ldy_f2h_4fb .section}
+If API descriptions, optional parameter values, or available specifications conflict with the resource or specification limits described in the Limits topic, the limits prevails.
 
-This service supports HTTP and HTTPS requests, and allows the GET and POST methods. You can call a DDH API using the following methods:
+## Developer options
 
--   [SDKs](https://github.com/aliyun) of different programming languages \(Recommended\)
+You can call an API operation by using the following methods:
 
--   Alibaba Cloud [CLI](https://www.alibabacloud.com/help/doc-detail/29993.htm)
+-   \(Recommended\) Programming language-specific [SDKs](https://github.com/aliyun) for the API.
+-   Alibaba Cloud [OpenAPI Explorer](https://api.aliyun.com/)
+-   Configure Alibaba Cloud CLI. For more information, see [What is Alibaba Cloud CLI?]().
+-   URL-based API requests.
 
--   Alibaba Cloud [API Explorer](https://api.aliyun.com/)
-
--   API URL request
-
-**Note:** 
-
-To use API URL requests, you must manually complete the authentication process and encode the URL for every request. This allows you to learn the authentication process for accessing Alibaba Cloud. For more information, see [Create an AccessKey](../../../../../dita-oss-bucket/SP_27/DNgameshield1843536/EN-US_TP_13782.md#).
+    **Note:** To send URL requests to the API, you must complete the authentication process and prepare the URL for every request. For more information, see [Request method](/intl.en-US/API Reference/Request method.md).
 
 
-If you use the CLI, SDKs, or API Explorer, you can skip the manual authentication process. We recommend that you use the language-specific SDK to call an API and manage your resources.
+You can skip the authentication process by using the SDK, CLI, or API Explorer to call API operations.
 
-**Note:** When you call an API in the Alibaba Cloud CLI and SDK, remove the period \(.\) from request parameters . For example, use `SystemDiskCategory` for the request parameter `SystemDisk.Category`.
+**Note:** When you call an API operation by using Alibaba Cloud CLI or SDKs, you must delete periods \(.\) from request parameters. For example, you must use `SystemDiskCategory` instead of `SystemDisk.Category`.
 
-## Invocation methods {#section_dbt_gfh_4fb .section}
+## Request syntax
 
-The request URL, which consists of different parameters, has a fixed request structure. The URL contains common parameters, your signature, and API-specific parameters of an API. We provide sample URL requests for every API. These sample URLs are not encoded in order to make them easy to read. You must encode the URL before making a request. After the authentication process is complete based on your signature, the results are returned to you. The response parameters are displayed if the authentication is successful, and the error message is displayed if the authentication fails. You can troubleshoot issues according to the common error codes and API-specific error codes. For more information, see [Introduction to Alibaba Cloud API](../../../../../dita-oss-bucket/SP_282/DNICMS1858991/EN-US_TP_1107.md#).
+The request URL consists of different parameters and has a fixed syntax. The URL contains common parameters, your signature, and operation-specific parameters. Sample URL requests are provided in every API reference topic. However, these topics do not describe how to encode URLs. You must encode the related URL before you make a request. For more information, see [Request method](/intl.en-US/API Reference/Request method.md), [Common parameters](/intl.en-US/API Reference/Common parameters.md), and [Signature method](/intl.en-US/API Reference/Signature method.md).
 
-Currently, DDH shares the endpoint with ECS. For more information, see ECS[Request structure](../../../../../dita-oss-bucket/SP_2/DNA0011860945/EN-US_TP_9847.md#).
+The system returns the request result based on your signature verification. The response parameters are displayed if the API call is successful. An error message appears if the API call fails. You can resolve the error based on the common error codes and operation-specific error codes.
 
-**Note:** We recommend that you use an SDK to call an API and manage your resources, to avoid manual authentication.
+DDH shares the same endpoint with Elastic Compute Service \(ECS\). For more information, see [Request syntax](/intl.en-US/API Reference/Getting started/Request syntax.md).
 
