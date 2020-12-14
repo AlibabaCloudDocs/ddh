@@ -11,17 +11,17 @@ You can call this operation to create a dedicated host cluster.
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|CreateDedicatedHostCluster|The operation that you want to perform. Set the value to CreateDedicatedHostCluster. |
-|RegionId|String|Yes|cn-hangzhou|The region ID of the dedicated host cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
+|RegionId|String|Yes|cn-hangzhou|The ID of the region in which to create the dedicated host cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list. |
 |DryRun|Boolean|No|false|Specifies whether to check the validity of the request without actually making the request. Valid values:
 
--   true: The validity of the request is checked but resources are not queried. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the request fails the check, the corresponding error message is returned. If the request is dertermined as valid, the `DryRunOperation` error code is returned.
--   false: The validity of the request is checked. If the request is dertermined as valid, a 2XX HTTP status code is returned and the request is made.
+-   true: The validity of the request is checked but the request is not made. Check items include whether your AccessKey pair is valid, whether RAM users are authorized, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+-   false: The validity of the request is checked. If the check succeeds, a 2XX HTTP status code is returned and the request is made.
 
-Default value: false. |
-|Tag.N.Key|String|No|TestKey|The key of tag N of the dedicated host cluster. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`. |
-|Tag.N.Value|String|No|TestValue|The value of tag N of the dedicated host cluster. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`. |
-|ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which the dedicated host cluster belongs. |
-|ZoneId|String|No|cn-hangzhou-f|The zone ID of the dedicated host cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list. |
+Default value: false |
+|Tag.N.Key|String|No|TestKey|The key of tag N of the dedicated host cluster. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`. |
+|Tag.N.Value|String|No|TestValue|The value of tag N of the dedicated host cluster. Valid values of N: 1 to 20. The tag value cannot be an empty string. It can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`. |
+|ResourceGroupId|String|No|rg-bp67acfmxazb4p\*\*\*\*|The ID of the resource group to which to assign the dedicated host cluster. |
+|ZoneId|String|No|cn-hangzhou-f|The ID of the zone in which to create the dedicated host cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list. |
 |DedicatedHostClusterName|String|No|myDDHCluster|The name of the dedicated host cluster. The name must be 2 to 128 characters in length and can contain letters, digits, periods \(.\), underscores \(\_\), and hyphens \(-\). It must start with a letter. It cannot contain `http://` or `https://`.
 
 This parameter is empty by default. |
