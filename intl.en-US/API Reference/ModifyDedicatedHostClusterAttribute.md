@@ -1,6 +1,6 @@
 # ModifyDedicatedHostClusterAttribute
 
-You can call this operation to modify some properties of a dedicated host cluster, such as its name and description.
+You can call this operation to modify some attributes of a dedicated host cluster, such as its name and description.
 
 ## Debugging
 
