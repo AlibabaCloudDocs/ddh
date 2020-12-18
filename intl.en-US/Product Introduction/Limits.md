@@ -1,30 +1,30 @@
-# Limits {#concept_gjy_gkn_tdb .concept}
+# Limits
 
-DDHs have the following limits.
+This topic describes the limits that apply when you use dedicated hosts.
 
-**Note:** If you are using an ECS instance on a DDH, besides the following limits, you must also consider the limits to ECS. For more information, see [limit](../../../../intl.en-US/User Guide/Limits.md#) of Elastic Compute Service \(ECS\).
+The following table describes the limits that apply when you use dedicated hosts. In addition, the limits on Elastic Compute Service \(ECS\) resources also apply to ECS instances that are created on dedicated hosts. For more information, see [Limits](/intl.en-US/Product Introduction/Limits.md).
 
-|Item|Limit|Supply for higher configuration or unlock configuration rights|
-|:---|:----|:-------------------------------------------------------------|
-|Permission to create a DDH| Complete [real-name registration](https://www.alibabacloud.com/help/doc-detail/52595.htm) to create a DDH in the mainland China regions.
+|Limit|Description|Exception|
+|:----|:----------|:--------|
+|Creation of dedicated hosts|Before you create dedicated hosts in mainland China, you must complete the [real-name verification](https://www.alibabacloud.com/help/doc-detail/52595.htm).
 
- |Not supported.|
-|Supported network types|Virtual Private Cloud \(VPC\). For more information about VPC, see [what is VPC](../../../../intl.en-US/Product Introduction/What is VPC?.md#).|Not supported.|
-|Billing methods links between a DDH and its ECS instances| Subscription DDH: For both Pay-As-You-Go and Subscription ECS instances.
+|None|
+|Supported network types|Virtual private cloud \(VPC\) is supported. For more information, see [What is a VPC?](/intl.en-US/Product Introduction/What is a VPC?.md)|None|
+|Billing methods of dedicated hosts and ECS instances|You can create pay-as-you-go or subscription ECS instances on subscription dedicated hosts.
 
- |Not supported.|
-| Configurations of Subscription ECS instances on a Subscription DDH
+|None|
+|Creation of subscription ECS instances on a subscription dedicated host
 
- |The expiration time of the ECS instance cannot be later than that of the DDH.|Not supported.|
-| Auto-renewal Subscription ECS instances on a Subscription DDH
+|The expiration date of subscription ECS instances cannot be later than that of the dedicated host.|None|
+|Renewal of subscription ECS instances on a subscription dedicated host
 
- |The expiration of the ECS instance after auto-renewal cannot be later than that of DDH. If the time for auto-renewal is against the rule, auto-renewal fails.|Not supported.|
-|[Conversion of billing methods](../../../../intl.en-US/Pricing/Limits.md#) of ECS instances on a DDH| Available for the Pay-As-You-Go ECS instances on a Subscription DDH. After conversion, the expiration time of an ECS instance cannot be later than that of a DDH.
+|The expiration date of subscription ECS instances cannot be later than that of the dedicated host. If the auto-renewal period of subscription ECS instances do not meet this requirement, the auto-renewal fails.|None|
+|Switch of the billing method of ECS instances on a dedicated host from pay-as-you-go to subscription|The expiration date of subscription ECS instances cannot be later than that of the dedicated host.
 
- |Not supported.|
-|Conversion of billing methods of a DDH|Not supported.|Not supported.|
-|ECS instance migration between shared cloud hosting and DDH| Only Pay-As-You-Go ECS instances can be migrated. Subscription ECS instances and Preemptible instances cannot be migrated.
+|None|
+|Change of the billing method of dedicated hosts|None.|None|
+|Migration of ECS instances between a shared host and a dedicated host|Only pay-as-you-go ECS instances can be migrated. Both subscription ECS instances and preemptible instances cannot be migrated.
 
- |Not supported.|
-|ECS instance migration between DDHs|Instances can be migrated only between DDHs of the same [dedicated host type](intl.en-US/Product Introduction/Dedicated Host types.md#) under one account. ECS instances on a DDH with local SSD disks cannot be migrated.|Not supported.|
+|None|
+|Migration of ECS instances between different dedicated hosts|You can migrate ECS instances only between the same type of dedicated hosts. The dedicated hosts must belong to the same Alibaba Cloud account. ECS instances that run on local SSD hosts cannot be migrated. For more information about dedicated host types, see [Dedicated host types](/intl.en-US/Product Introduction/Dedicated host types.md).|None|
 
