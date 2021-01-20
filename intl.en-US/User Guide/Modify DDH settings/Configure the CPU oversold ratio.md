@@ -13,7 +13,7 @@ Some dedicated host types allow you to configure the CPU oversold ratio. In scen
 
 3.  In the top navigation bar, select a region.
 
-4.  Select the dedicated host for which you want to configure the CPU oversold ratio. In the upper-left corner of the Dedicated Host tab, choose ![dropdown-menu](../images/p199068.png)\>**Modify DDH Info**.
+4.  Select the dedicated host for which you want to configure the CPU oversold ratio. In the upper-left corner of the Dedicated Host tab, choose ![dropdown-menu](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4114511161/p199068.png)\>**Modify DDH Info**.
 
     ![modify-ratio](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7925690161/p201716.png)
 
