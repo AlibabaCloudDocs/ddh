@@ -4,11 +4,14 @@
 
 故障迁移服务开启后，当DDH因故障停机时，会自动迁移至健康的DDH。若您未开启DDH故障迁移服务，DDH发生故障停机后，您需要[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)申请置换一台健康的DDH。
 
-**说明：** 本地SSD型DDH（例如本地SSD型i2）不支持自行手动迁移和故障时自动迁移。如果本地SSD型DDH出现故障，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)申请人工迁移，但迁移后本地盘数据会丢失。
+**说明：**
+
+-   本地SSD型DDH（例如本地SSD型i2）不支持自行手动迁移和故障时自动迁移。如果本地SSD型DDH出现故障，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex)申请人工迁移，但迁移后本地盘数据会丢失。
+-   DDH因故障迁移完成后，DDH ID及ECS实例的元数据（例如实例ID、私有IP地址、公网IP地址）均保持不变，但是由于更换了物理服务器，DDH的机器码会改变。
 
 1.  登录[ECS管理控制台](https://ecs.console.aliyun.com)。
 
-2.  在左侧导航栏，单击**实例与镜像** \> **专有宿主机 DDH**。
+2.  在左侧导航栏，选择**实例与镜像** \> **专有宿主机 DDH**。
 
 3.  在顶部菜单栏左上角处，选择地域。
 
