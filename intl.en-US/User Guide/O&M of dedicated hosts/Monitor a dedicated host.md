@@ -1,82 +1,83 @@
 # Monitor a dedicated host
 
-You can view the resource usage of a dedicated host and configure alarm rules in the CloudMonitor console. This allows you to monitor the running status of a dedicated host.
+You can view the resource usage of a dedicated host and configure alert rules in the Cloud Monitor console. This allows you to monitor the running status of a dedicated host.
 
 ## View the resource usage of a dedicated host
 
-1.  Log on to the [CloudMonitor console](https://cloudmonitor.console.aliyun.com).
+1.  Log on to the [Cloud Monitor console](https://cloudmonitor.console.aliyun.com).
 
-2.  In the left-side navigation pane, choose **Dashboard** \> **Dashboards**.
+2.  In the left-side navigation pane, click **Cloud products**.
 
-3.  Select **Dedicated Host** from the **Product** list.
+3.  In the **Elastic calculation** section, click **Dedicated Host**.
 
-4.  Select a region and a dedicated host from the **Dedicated Host** list.
+4.  On the **Dedicated Host** page, select the region and ID of the instance that you want to view.
 
 5.  View the resource usage of a dedicated host.
 
-    You can view the monitoring data from the last 30 days. CloudMonitor monitors the computing, networking, and storage resources of a dedicated host. The following table describes the metrics.
+    You can view the monitoring data of the last 30 days. Cloud Monitor monitors the computing, networking, and storage resources of a dedicated host. The following table describes the metrics.
 
     |Resource type|Metric|Unit|Description|
     |-------------|------|----|-----------|
     |Computing resource|UserCpuUtilization|%|The average CPU usage of all the ECS instances on a dedicated host|
     |Networking resource|UserNetworkRxPPS|PPS|The sum of inbound packets of all the ECS instances on a dedicated host per second|
     |UserNetworkTxPPS|PPS|The sum of outbound packets of all the ECS instances on a dedicated host per second|
-    |UserNetworkRxBandwidth|bit/s|The total inbound throughput of all the ECS instances on a dedicated host|
-    |UserNetworkTxBandwidth|bit/s|The total outbound throughput of all the ECS instances on a dedicated host|
-    |Storage resource|UserDiskReadIOPS|IOPS|The total number of requests that read data from the disks of all the ECS instances on a dedicated host|
-    |UserDiskWriteIOPS|IOPS|The total number of requests that write data from the disks of all the ECS instances on a dedicated host|
-    |UserDiskWriteBPS|Byte/s|The total number of bytes that are read from the disks of all the ECS instances on a dedicated host|
-    |UserDiskWriteBPS|Byte/s|The total number of bytes that are written from the disks of all the ECS instances on a dedicated host|
+    |UserNetworkRxBandwidth|bit/s|The total inbound bandwidth of all the ECS instances on a dedicated host per second|
+    |UserNetworkTxBandwidth|bit/s|The total outbound bandwidth of all the ECS instances on a dedicated host per second|
+    |Storage resource|The read capacity of virtual machines running on a dedicated host|IOPS|The total number of requests that read data from the disks of all the ECS instances on a dedicated host|
+    |UserDiskWriteIOPS|IOPS|The total number of requests that write data to the disks of all the ECS instances on a dedicated host|
+    |UserDiskReadBPS|Byte/s|The total number of bytes that are read from the disks of all the ECS instances on a dedicated host|
+    |UserDiskWriteBPS|Byte/s|The total number of bytes that are written to the disks of all the ECS instances on a dedicated host|
 
 
-## Create an alarm rule for a dedicated host
+## Create an alert rule for a dedicated host
 
-You must create alarm contacts and alarm contact groups before you create alarm rules. For more information, see [t116866.md\#](/intl.en-US/Alarm service/Alert contacts/Create an alert contact or alert group.md).
+You must create alert contacts and alert contact groups before you create alert rules. For more information, see [Create an alert contact or alert group](/intl.en-US/Alarm service/Alert contacts/Create an alert contact or alert group.md).
 
-1.  Move the pointer over the metric for which you want to create an alarm rule. Click the ![Create an alarm rule for a dedicated host](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9653909951/p103594.png) icon in the upper-right corner.
+1.  Move the pointer over the metric for which you want to create an alert rule. Click the ![Create an alert rule](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5334915161/p212965.png) icon in the upper-right corner.
 
-2.  Associate an alarm rule with a dedicated host.
+2.  Associate an alert rule with a dedicated host.
 
-    By default, the current dedicated host is associated with the alarm rule. However, you can change the associated dedicated host.
+    By default, the current dedicated host is associated with the alert rule. However, you can change the associated dedicated host.
 
-    -   Associate the alarm rule with other dedicated hosts: Select a region from the **Region** list. Then select one or more dedicated hosts from the **Dedicated Host** list.
-    -   Associate the alarm rule with all dedicated hosts: Select **All Resources** from the **Resource Range** list.
-3.  Configure the alarm rule.
+    -   To associate the alert rule with other dedicated hosts, select a region from the **Region** list. Then, select one or more dedicated hosts from the **Dedicated Host** list.
+    -   To associate the alert rule with all dedicated hosts, select **All Resources** from the **Resource Range** list.
+3.  Configure the alert rule.
 
-    The following table describes the parameters of a sample alarm rule.
+    The following table describes the parameters of a sample alert rule.
 
-    |Section|Example|Description|
-    |-------|-------|-----------|
-    |**Alarm Rule**|ddhxxx-cpu|The alarm rule monitors the average CPU usage of all the ECS instances on the dedicated host.|
+    |Region|Example|Description|
+    |------|-------|-----------|
+    |**Rule Name**|ddhxxx-cpu|The alert rule monitors the average CPU usage of all the ECS instances on the dedicated host.|
     |**Rule Description**|    -   UserCpuUtilization
     -   1-minute cycle
-    -   Continue for 3 periods
+    -   Continue for three cycles
     -   Value
     -   \>=
     -   80%
-|If the average CPU usage of all the ECS instances on the dedicated host is greater than or equal to 80% for three consecutive 1-minute cycles, an alarm is triggered.|
-    |**Mute for**|30 minutes|If the alarm conditions are still met 30 minutes after the first alarm, another alarm is triggered.|
-    |**Effective Period**|19:00 to 20:59|Specifies whether to issue alarms only between 19:00 and 21:00.|
+|If the average CPU usage of all the ECS instances on the dedicated host is greater than or equal to 80% for three consecutive 1-minute cycles, an alert is triggered.|
+    |**Mute for**|30 minutes|If the alert conditions are still met 30 minutes after the first alert, another alert notification is sent.|
+    |**Effective Period**|19:00 to 20:59|Specifies whether to trigger alerts only between 19:00 and 21:00.|
 
 4.  Configure a notification method.
 
-    1.  Select a contact group from the **Contact Group** list. The selected contact group is displayed in the **Selected Groups** list.
+    1.  Select a contact group from the **Contact Group** list. Click ![Move To](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5334915161/p217470.png). The selected contact group is displayed in the **Selected Groups** list.
 
-    2.  Select an alarm level.
+    2.  Select an alert level.
 
-        The alarm level determines the notification method. The following three alarm levels are supported:
+        The alert level determines the notification method. The following three alert levels are supported:
 
-        -   Phone + Text Message + Email + DingTalk \(Critical\)
-        -   Test Message + Email + DingTalk \(Warning\)
-        -   Email + DingTalk \(Info\)
+        -   Critical. If a critical alert occurs, a notification is sent to specified recipients by using a voice call, text message, DingTalk message, and an email.
+        -   Warning. If a warning alert occurs, a notification is sent to specified recipients by using a text message, DingTalk message, and an email.
+        -   Info. If an info alert occurs, a notification is sent to specified recipients by using an email and a DingTalk message.
     3.  Set other optional parameters.
 
         The following parameters are optional:
 
-        -   **Auto Scaling**: Specify a scaling rule that is automatically executed when an alarm is triggered.
-        -   The default email subject is Product Name + Metric Name + Instance ID.
-        -   **Email Remark**: Enter additional email information.
-        -   **HTTP CallBack**: Enter a URL that is accessible from the Internet. CloudMonitor sends HTTP POST requests to push alarm messages to this URL.
-        For more information, see [t115255.md\#](/intl.en-US/Alarm service/Alarm rules/Create an event-triggered alert rule.md).
+        -   **Auto Scaling**: Specify a scaling rule that is automatically executed when an alert is triggered.
+        -   **Log Service**: Specify a region, project, and Logstore. If an alert is triggered, the alert information is written to the Logstore.
+        -   **Email Subject**: The default email subject is Product Name + Metric Name + Instance ID.
+        -   **Email Remark**: Enter the email description.
+        -   **HTTP CallBack**: Enter a URL that is accessible from the Internet. Cloud Monitor sends HTTP POST requests to push alert messages to this URL.
+        For more information, see [Create a threshold-triggered alert rule](/intl.en-US/Alarm service/Alarm rules/Create a threshold-triggered alert rule.md).
 
 
