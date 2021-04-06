@@ -24,7 +24,7 @@ The storage enhanced type g5se is at the invitational preview stage. If you want
 |Security-enhanced compute type c6t|c6t|2|Intel ® Xeon ® Platinum 8269 \(Cascade Lake\)|52|104 [1](#vCPU)|192|N/A|32|2400|
 |Computation overprovisioned type c6s|Custom|2|Intel Xeon Platinum 8269CY \(Cascade Lake\)|52|208 [2](#vCPU-CPU)|180|N/A|25|600|
 |General overprovisioned type g6s|Custom|2|Intel Xeon Platinum 8269CY \(Cascade Lake\)|52|312 [2](#vCPU-CPU)|372|N/A|25|600|
-|Memory overprovisioned type r6s|Custom|2|Intel Xeon Platinum 8269CY \(Cascade Lake\)|52|416 [2](#vCPU-CPU)|756|N/A|25|600|
+|Memory overprovisioned type r6s|Custom|2|Intel Xeon Platinum 8269CY \(Cascade Lake\)|52|416 [2](#vCPU-CPU)|750|N/A|25|600|
 |General purpose type g6|-   ic6
 -   c6
 -   g6
