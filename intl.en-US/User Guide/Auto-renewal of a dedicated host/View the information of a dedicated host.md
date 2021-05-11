@@ -4,9 +4,9 @@ This topic describes how to view the information of a dedicated host. The inform
 
 1.  Log on to the [ECS console](https://ecs.console.aliyun.com).
 
-2.  In the top navigation bar, select a region.
+2.  In the left-side navigation pane, choose **Instances & Images** \> **Dedicated Hosts**.
 
-3.  In the left-side navigation pane, choose **Instances & Images** \> **Dedicated Hosts**.
+3.  In the top navigation bar, select a region.
 
 4.  On the **Dedicated Host** page, click the **Dedicated Host** tab.
 
