@@ -32,7 +32,7 @@ The following table describes the methods that you can use to upgrade or downgra
 |---------|------|-----|---------|
 |Upgrade|Use the configuration upgrade feature.|The upgraded public bandwidth immediately takes effect.**Note:** If you upgrade the public bandwidth of an ECS instance from 0 Mbit/s to a higher value, a public IP address is automatically allocated to the ECS instance.
 
-|[Upgrade the instance types of subscription instances](/intl.en-US/Instance/Change configurations/Change instance types/Upgrade the instance types of subscription instances.md)|
+|[Modify the bandwidth configurations of subscription instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of subscription instances.md)|
 |Downgrade|Use the configuration downgrade feature.|The downgraded public bandwidth immediately takes effect.**Note:** If you downgrade the public bandwidth of an ECS instance to 0, the public IP address is automatically detached.
 
 |[Modify the bandwidth configurations of subscription instances](/intl.en-US/Instance/Change configurations/Modify bandwidth configurations/Modify the bandwidth configurations of subscription instances.md)|
